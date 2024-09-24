@@ -7,10 +7,15 @@
 }
 
 .completed-task-item {
-    text-decoration: line-through;
-    color: #6c757d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
 }
-
+.completed-task-item:last-child {
+    border-bottom: none;
+  }
 .completed-task-item button {
     background-color: #dc3545;
     color: white;

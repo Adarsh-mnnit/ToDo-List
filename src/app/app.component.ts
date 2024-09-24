@@ -22,14 +22,16 @@ export class AppComponent {
 
 
   onAddTask() {
-    let task: Task = {
-      taskId: this.todoService.getNextTaskId(),
-      name: this.todoName,
-      isComplete: false
+    if (this.todoName.trim()) {
+      let task: Task = {
+        taskId: this.todoService.getNextTaskId(),
+        name: this.todoName,
+        isComplete: false
+      }
+      this.todoName = "";
+      this.todoService.addTodoTask(task);
+      this.taskList = this.todoService.getTaskList();
     }
-    this.todoName = "";
-    this.todoService.addTodoTask(task);
-    this.taskList = this.todoService.getTaskList();
   }
   onTaskActions(event: any) {
     switch (event.action) {

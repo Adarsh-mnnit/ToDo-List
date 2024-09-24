@@ -6,7 +6,9 @@ import { Task } from './task.interface';
 })
 export class TodoService {
 
-  constructor() { }
+  constructor() {
+    this.loadData();
+   }
   private nextTaskId = 5;
   private todoTaskList: Task[] = [{
     name: "Dummy task1",
@@ -27,8 +29,28 @@ export class TodoService {
     isComplete: true
   }];
 
+  loadData(){
+    const com_task = localStorage.getItem('com_task'); // Retrieve tasks from local storage
+    if (com_task) {
+      this.completeTaskList = JSON.parse(com_task); // Parse and load tasks into the tasks array
+    }
+    const tasks= localStorage.getItem('tasks');
+    if(tasks){
+      this.todoTaskList=JSON.parse(tasks);
+    }
+    const id = localStorage.getItem('nextId');
+    if(id){
+      this.nextTaskId=JSON.parse(id);
+    }
+  }
+
+  updateLocalData(){
+    localStorage.setItem('tasks', JSON.stringify(this.todoTaskList));
+    localStorage.setItem('com_task',JSON.stringify(this.completeTaskList));
+    localStorage.setItem("nextId",JSON.stringify(this.nextTaskId));
+  }
   getNextTaskId() {
-    return ++this.nextTaskId;
+    return this.nextTaskId++;
   }
 
   getTaskList(): Task[] {
@@ -43,16 +65,19 @@ export class TodoService {
     console.log("task added");
     console.log(task);
     this.todoTaskList.push(task);
+    this.updateLocalData();
   }
 
   addCompleteTask(task: Task) {
     task.isComplete = true;
     this.todoTaskList = this.todoTaskList.filter(t => t.taskId != task.taskId);
     this.completeTaskList.push(task);
+    this.updateLocalData();
   }
 
   deleteTodoTask(task: Task) {
     this.todoTaskList = this.todoTaskList.filter(t => t.taskId != task.taskId);
     this.completeTaskList = this.completeTaskList.filter(t => t.taskId != task.taskId);
+    this.updateLocalData();
   }
 }

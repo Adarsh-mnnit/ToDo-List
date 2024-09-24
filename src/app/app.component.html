@@ -1,8 +1,15 @@
 <div class="task-container">
   <div class="header-title">Angular ToDo List App</div>
   <div class="header">
-    <input type="text" [(ngModel)]="todoName" placeholder="Enter name of task">
-    <button (click)="onAddTask()">+Add</button>
+    <div class="header-input-group">
+      <input type="text" name="taskInput" [(ngModel)]="todoName" placeholder="Enter name of task" required minlength="5"
+        #taskInput="ngModel">
+      <button (click)="onAddTask()" title="Add tasks" [disabled]="taskInput.invalid"  [ngClass]="{ 'disabled-button': taskInput.invalid }">+Add</button>
+    </div>
+    <div *ngIf="taskInput.invalid && taskInput.touched" class="error">
+      <span *ngIf="taskInput.errors?.['required']">Task name is required.</span>
+      <span *ngIf="taskInput.errors?.['minlength']">Task name must be at least 5 characters long.</span>
+    </div>
   </div>
 
   <app-todo-list [taskList]="taskList" (action)="onTaskActions($event)"></app-todo-list>
