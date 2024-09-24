@@ -1,0 +1,25 @@
+.completed-tasks {
+    margin-top: 30px;
+}
+
+.completed-tasks h3 {
+    margin-bottom: 10px;
+}
+
+.completed-task-item {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.completed-task-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.completed-task-item button:hover {
+    background-color: #c82333;
+}

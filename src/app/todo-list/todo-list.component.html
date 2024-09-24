@@ -1,0 +1,8 @@
+<div class="task-list">
+    <h3>List of Tasks</h3>
+    <div class="task-item" *ngFor="let task of taskList">
+        <span>{{task.taskId}}. {{task?.name}}</span>
+        <button (click)="onComplete(task)">compelete</button>
+        <button (click)="onDelete(task)">delete</button>
+    </div>
+</div>
