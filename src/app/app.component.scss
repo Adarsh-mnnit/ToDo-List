@@ -8,7 +8,6 @@
 }
 
 .header {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
@@ -18,6 +17,11 @@
   font-size: 24px;
   font-weight: bold;
   color: #333;
+  margin-bottom: 15px
+}
+
+.header-input-group{
+  display: flex;
 }
 
 .header input {
@@ -30,14 +34,22 @@
 
 .header button {
   background-color: #28a745;
-  /* Green */
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
-  cursor: pointer;
 }
 
 .header button:hover {
   background-color: #218838;
+}
+
+.disabled-button {
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 12px; 
+  margin-top: 5px;
 }

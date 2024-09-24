@@ -18,14 +18,25 @@
   border-bottom: none;
 }
 .task-item button {
-  background-color: #dc3545; /* Red */
   color: white;
   border: none;
   padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+  margin: 1px;
 }
 
-.task-item button:hover {
+.complete-button{
+  background-color: #28a745;
+}
+
+.complete-button:hover{
+  background-color: #218838;
+}
+
+.delete-button{
+  background-color: #dc3545;
+}
+.delete-button:hover{
   background-color: #c82333;
 }
